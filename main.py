@@ -17,7 +17,7 @@ with Progress() as progress:
 Helper Method:
 Reads a PDF file and converts it into pages that can be used 
 by the PYPDF2 library
-'''
+''' 
 def getPages(pdfFile):
     reader = PdfReader(pdfFile)
     pages = reader.pages
