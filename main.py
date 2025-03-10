@@ -23,6 +23,10 @@ def getPages(pdfFile):
     pages = reader.pages
     return pages
 
+def savePDF(writer, name: (str)):
+    with open(name, "wb") as file:
+        writer.write(file)
+
 def writeDocument(writer, pages):
     for page in pages:
         writer.add_page(page)
@@ -32,18 +36,20 @@ def MergePDF(pdfFiles):
     for file in pdfFiles:
         pages = getPages(file)
         writeDocument(writer, pages)
-    with open("mergedPDF.pdf", "wb") as file:
-        writer.write(file)
-
+    savePDF(writer, "merged_PDF.pdf")
 
 def encryptPDF(pdfFile, password: (str)):
     pages = getPages(pdfFile)
     writer = PdfWriter()
-    for page in pages:
-        writer.add_page(page)
+    writeDocument(writer, pages)
     writer.encrypt(password)
-    with open("encrypted_pdf.pdf", "wb") as file:
-        writer.write(file)
+    savePDF(writer, "encrypted_PDF.pdf")
+
+def decryptPDF(pdfFile, password: (str)):
+    reader = PdfReader(pdfFile)
+    if (reader.is_encrypted()):
+        reader.decrypt(password)
+    
 
 
 def main():
