@@ -23,13 +23,20 @@ def getPages(pdfFile):
     pages = reader.pages
     return pages
 
+def getPages(reader):
+    pages = reader.pages
+    return pages
+
+
 def savePDF(writer, name: (str)):
     with open(name, "wb") as file:
         writer.write(file)
 
+
 def writeDocument(writer, pages):
     for page in pages:
         writer.add_page(page)
+
 
 def MergePDF(pdfFiles):
     writer = PdfWriter()
@@ -37,6 +44,7 @@ def MergePDF(pdfFiles):
         pages = getPages(file)
         writeDocument(writer, pages)
     savePDF(writer, "merged_PDF.pdf")
+
 
 def encryptPDF(pdfFile, password: (str)):
     pages = getPages(pdfFile)
@@ -47,21 +55,22 @@ def encryptPDF(pdfFile, password: (str)):
 
 def decryptPDF(pdfFile, password: (str)):
     reader = PdfReader(pdfFile)
-    if (reader.is_encrypted()):
+    writer = PdfWriter()
+    if (reader.is_encrypted):
         reader.decrypt(password)
-    
-
+        writeDocument(writer, getPages(reader))
+    savePDF(writer, "decrypted_PDF.pdf")
 
 def main():
     parser = argparse.ArgumentParser(description="Extract text from a PDF.")
-    # parser.add_argument("fpath", type=str, help="Select output format (pdf or docx).")
-    # parser.add_argument("password", type=str, help="Select output format (pdf or docx).")    
+    parser.add_argument("fpath", type=str, help="Select output format (pdf or docx).")
+    parser.add_argument("password", type=str, help="Select output format (pdf or docx).")    
     parser.add_argument("-m", nargs = "*")
     args = parser.parse_args()
     
-    MergePDF(args.m)
+    #MergePDF(args.m)
 
-    #encryptPDF(f"{args.fpath}",f"{args.password}" )
+    decryptPDF(args.fpath,f"{args.password}" )
 
 if __name__ == "__main__":
     main()
