@@ -63,8 +63,8 @@ def decryptPDF(pdfFile, password: (str)):
 
 def main():
     parser = argparse.ArgumentParser(description="Extract text from a PDF.")
-    parser.add_argument("fpath", type=str, help="Select output format (pdf or docx).")
-    parser.add_argument("password", type=str, help="Select output format (pdf or docx).")    
+    parser.add_argument("fpath", type=str)
+    parser.add_argument("password", type=str)    
     parser.add_argument("-m", nargs = "*")
     args = parser.parse_args()
     
