@@ -3,6 +3,8 @@ from rich.progress import Progress
 import time
 from PyPDF2 import PdfReader, PdfWriter
 import argparse
+from pdf2docx import Converter
+import os
 
 '''
 CLI progress bar
@@ -18,12 +20,12 @@ Helper Method:
 Reads a PDF file and converts it into pages that can be used 
 by the PYPDF2 library
 ''' 
-def getPages(pdfFile):
+def getPages(pdfFile: (str)):
     reader = PdfReader(pdfFile)
     pages = reader.pages
     return pages
 
-def getPages(reader):
+def getPagesFromReader(reader: (PdfReader)):
     pages = reader.pages
     return pages
 
@@ -43,7 +45,7 @@ def MergePDF(pdfFiles):
     for file in pdfFiles:
         pages = getPages(file)
         writeDocument(writer, pages)
-    savePDF(writer, "merged_PDF.pdf")
+    savePDF(writer, os.path.basename(pdfFiles[1]))
 
 
 def encryptPDF(pdfFile, password: (str)):
@@ -58,19 +60,28 @@ def decryptPDF(pdfFile, password: (str)):
     writer = PdfWriter()
     if (reader.is_encrypted):
         reader.decrypt(password)
-        writeDocument(writer, getPages(reader))
+        writeDocument(writer, getPagesFromReader(reader))
     savePDF(writer, "decrypted_PDF.pdf")
+
+def convertToWord(pdfFile, location = "pdf2word.docx"):
+    os.path.basename(pdfFile)    
+    cv = Converter(pdfFile)
+    cv.convert(location)
+    cv.close()
+
+
 
 def main():
     parser = argparse.ArgumentParser(description="Extract text from a PDF.")
-    parser.add_argument("fpath", type=str)
-    parser.add_argument("password", type=str)    
+    #parser.add_argument("fpath", type=str)
+    #parser.add_argument("spath", type=str, nargs = "?")  
+    #parser.add_argument("password", type=str, nargs = "?")    
     parser.add_argument("-m", nargs = "*")
     args = parser.parse_args()
     
-    #MergePDF(args.m)
+    MergePDF(args.m)
 
-    decryptPDF(args.fpath,f"{args.password}" )
+    #convertToWord(args.fpath,args.spath)
 
 if __name__ == "__main__":
     main()
