@@ -5,6 +5,7 @@ from PyPDF2 import PdfReader, PdfWriter
 import argparse
 from pdf2docx import Converter
 import os
+import convertapi 
 
 '''
 CLI progress bar
@@ -69,17 +70,21 @@ def convertToWord(pdfFile, location = "pdf2word.docx"):
     cv.convert(location)
     cv.close()
 
-
+def pdfCompressor(pdfFile):
+    convertapi.api_credentials = ''
+    convertapi.convert('compress', {
+    'File': pdfFile
+    }, from_format = 'pdf').save_files('compressedPDF.pdf')
 
 def main():
     parser = argparse.ArgumentParser(description="Extract text from a PDF.")
-    #parser.add_argument("fpath", type=str)
+    parser.add_argument("fpath", type=str)
     #parser.add_argument("spath", type=str, nargs = "?")  
     #parser.add_argument("password", type=str, nargs = "?")    
-    parser.add_argument("-m", nargs = "*")
+    #parser.add_argument("-m", nargs = "*")
     args = parser.parse_args()
     
-    MergePDF(args.m)
+    pdfCompressor(f"{args.fpath}")
 
     #convertToWord(args.fpath,args.spath)
 
