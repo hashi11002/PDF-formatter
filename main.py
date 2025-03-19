@@ -8,15 +8,6 @@ import os
 import convertapi 
 
 '''
-CLI progress bar
-'''
-with Progress() as progress:
-    task = progress.add_task("[cyan]Processing...", total=10)
-    for i in range(10):
-        time.sleep(0.1)  # Simulating work
-        progress.update(task, advance=1)
-
-'''
 Helper Method:
 Reads a PDF file and converts it into pages that can be used 
 by the PYPDF2 library
@@ -41,52 +32,103 @@ def writeDocument(writer, pages):
         writer.add_page(page)
 
 
-def MergePDF(pdfFiles):
+def MergePDF(pdfFiles, progress, task):
     writer = PdfWriter()
     for file in pdfFiles:
         pages = getPages(file)
         writeDocument(writer, pages)
     savePDF(writer, os.path.basename(pdfFiles[1]))
+    progress.update(task, advance = 1)
+    return os.path.basename(pdfFiles[1])
 
 
-def encryptPDF(pdfFile, password: (str)):
+def encryptPDF(pdfFile, password: (str), progress, task):
     pages = getPages(pdfFile)
     writer = PdfWriter()
     writeDocument(writer, pages)
     writer.encrypt(password)
+    print("{pdfFile} has been encrypted")
     savePDF(writer, "encrypted_PDF.pdf")
+    progress.update(task, advance = 1)
+    return "encrypted_PDF.pdf"
 
-def decryptPDF(pdfFile, password: (str)):
+def decryptPDF(pdfFile, password: (str), progress, task):
     reader = PdfReader(pdfFile)
     writer = PdfWriter()
     if (reader.is_encrypted):
         reader.decrypt(password)
         writeDocument(writer, getPagesFromReader(reader))
     savePDF(writer, "decrypted_PDF.pdf")
+    progress.update(task, advance = 1)
+    return "decrypted_PDF.pdf"
 
-def convertToWord(pdfFile, location = "pdf2word.docx"):
+def convertToWord(pdfFile, location, progress, task):
     os.path.basename(pdfFile)    
     cv = Converter(pdfFile)
     cv.convert(location)
     cv.close()
+    progress.update(task, advance = 1)
+    return location
 
-def pdfCompressor(pdfFile):
-    convertapi.api_credentials = ''
+def compressPDF(pdfFile, location, progress, task):
+    convertapi.api_credentials = '' # <--- Enter Your convertAPI API Key here
     convertapi.convert('compress', {
     'File': pdfFile
-    }, from_format = 'pdf').save_files('compressedPDF.pdf')
+    }, from_format = 'pdf').save_files(location)
+    progress.update(task, advance = 1)
+    return location
 
 def main():
-    parser = argparse.ArgumentParser(description="Extract text from a PDF.")
-    parser.add_argument("fpath", type=str)
-    #parser.add_argument("spath", type=str, nargs = "?")  
-    #parser.add_argument("password", type=str, nargs = "?")    
-    #parser.add_argument("-m", nargs = "*")
-    args = parser.parse_args()
-    
-    pdfCompressor(f"{args.fpath}")
 
-    #convertToWord(args.fpath,args.spath)
+    parser = argparse.ArgumentParser(description="Extract text from a PDF.")
+    parser.add_argument("-f", type=str, nargs="*", help="File Path(s) to process")
+    parser.add_argument("-s", type=str, nargs="?", help="Optional Save Path")
+    parser.add_argument("-e", type=str, help="Encryption Password")
+    parser.add_argument("-m", action="store_true", help="Merge Documents")  
+    parser.add_argument("-d", type=str, help="Decryption Password")  
+    parser.add_argument("-c", action="store_true", help="Compress Document")  
+    parser.add_argument("-w", action="store_true", help="Convert to Word Document")  
+
+    args = parser.parse_args()
+    output = args.s
+    
+    with Progress() as progress:
+        totalTasks = sum([args.m, args.c, args.w, bool(args.e), bool(args.d)])
+
+        if totalTasks == 0:
+            print("Please imput some parameters to use this application")
+
+        task = progress.add_task("[cyan]Processing...", total=totalTasks)
+
+        if args.m:
+            if args.f and len(args.f) >= 1:
+                output = MergePDF(args.f, progress, task)
+            else: print("Error: Provide pdfs or flag -f")
+
+        if args.w:
+            if args.f and len(args.f) == 1:
+                output = convertToWord(args.f[0], args.s or "pdf2Word.docx", progress, task)
+                print(output)
+            else: print("Error: Provide pdfs or flag -f")
+        
+        if args.c:
+            if args.f and len(args.f) == 1:
+                output = compressPDF(args.f[0], args.s or "CompressedPDf.pdf", progress, task)
+            else: print("Error: Provide pdfs or flag -f")
+        
+        if args.e:
+            if args.m or args.w or args.c:
+                output = encryptPDF(output, args.e, progress, task)
+            elif args.f and len(args.f) == 1 and not (args.m or args.w or args.c):
+                encryptPDF(args.f[0], args.e, progress, task)
+            else: print("Error: Incorrect flags provided")
+
+        if args.d:
+            if args.f and len(args.f) == 1:
+                output = decryptPDF(args.f[0], args.d, progress, task)
+            else: print("Error: Provide pdfs or flag -f")
+
+
 
 if __name__ == "__main__":
     main()
