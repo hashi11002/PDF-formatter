@@ -109,12 +109,12 @@ def main():
             if args.f and len(args.f) == 1:
                 output = convertToWord(args.f[0], args.s or "pdf2Word.docx", progress, task)
                 print(output)
-            else: print("Error: Provide pdfs or flag -f")
+            else: print("Error: Too many PDF's inputted or flag -f missing")
         
         if args.c:
             if args.f and len(args.f) == 1:
                 output = compressPDF(args.f[0], args.s or "CompressedPDf.pdf", progress, task)
-            else: print("Error: Provide pdfs or flag -f")
+            else: print("Error: Too many PDF's inputted or flag -f missing")
         
         if args.e:
             if args.m or args.w or args.c:
@@ -126,7 +126,7 @@ def main():
         if args.d:
             if args.f and len(args.f) == 1:
                 output = decryptPDF(args.f[0], args.d, progress, task)
-            else: print("Error: Provide pdfs or flag -f")
+            else: print("Error: Too many PDF's inputted or flag -f missing")
 
 
 
