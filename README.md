@@ -14,13 +14,13 @@ Windows Install Guide:
 
 ## Flag Guide
 This project uses argument passer library to allow the user to perform any operation on their PDF's. The Flags are as follows:
-  -f : List of file(s) paths that need the operation. 
-  -s : Location and name of the file to save as.
-  -e : Password to encrypt the file with.
-  -m : Boolean flag that triggers merging of PDF's.
-  -d : Passsword to decrypt the file with.
-  -c : Boolean flag that triggers compression of PDF File.
-  -w : Boolean flag that triggers conversion of PDF File to Word Document.
+  -f : List of file(s) paths that need the operation <br>
+  -s : Location and name of the file to save as <br>
+  -e : Password to encrypt the file with <br>
+  -m : Boolean flag that triggers merging of PDF's <br>
+  -d : Passsword to decrypt the file with <br>
+  -c : Boolean flag that triggers compression of PDF File <br>
+  -w : Boolean flag that triggers conversion of PDF File to Word Document <br>
 
   ## Use Case examples
   You can try simple commands in your terminal that perform a single operation as follows: 
