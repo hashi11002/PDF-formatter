@@ -22,7 +22,7 @@ This tool allows you to perform multiple operations such as merging, and encrypt
 5) Install all the libraries needed by the application : pip install rich PyPDF2 pdf2docx convertapi argparse
 6) Get the API Key for the file compressor from: [https://www.convertapi.com/integration/libraries/python](https://www.convertapi.com/pdf-to-compress/python) and add it in the compressPDF method. (Line 73)
 7) Now you are able to run the application. Enjoy :)
-
+<br>
 **Mac OS Intall Guide:**
 1) Clone the project into your code editor.
 2) Open Terminal, navigate to your local repository, and install virtual environment with the command: pip install virtualenv
