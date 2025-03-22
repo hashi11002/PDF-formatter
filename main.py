@@ -105,7 +105,9 @@ def main():
             else: print("Error: Provide pdfs or flag -f")
 
         if args.w:
-            if args.f and len(args.f) == 1:
+            if args.m:
+                output = convertToWord(output, args.s or "pdf2Word.docx", progress, task)
+            elif args.f and len(args.f) == 1:
                 output = convertToWord(args.f[0], args.s or "pdf2Word.docx", progress, task)
                 print(output)
             else: print("Error: Too many PDF's inputted or flag -f missing")
