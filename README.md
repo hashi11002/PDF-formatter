@@ -25,7 +25,7 @@ This project uses argument passer library to allow the user to perform any opera
   ## Use Case examples
   You can try simple commands in your terminal that perform a single operation as follows: 
 
-  **- To Merge 2 PDF's and save it with a name you specify:**<br>
+  - #### To Merge 2 PDF's and save it with a name you specify:**<br>
   <br>
 python main.py -m -f '..PDF formatter\samplepdf\samplepdf2mb.pdf' '..\PDF formatter\samplepdf\samplepdf3mb.pdf' -s 'merged-pdf.pdf'
 
