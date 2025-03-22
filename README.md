@@ -45,9 +45,9 @@ The order is as follows from top to bottom:
   ## Simple Use Case examples
   You can try simple commands in your terminal that perform a single operation as follows: 
 
-  - #### To Merge 2 PDF's and save it with a name you specify:<br>
+- #### To Merge 2 PDF's and save it with a name you specify:<br>
   <br>
-  python main.py -m -f "path\to\your\pdf1" "path\to\your\pdf2" -s 'merged-pdf.pdf'
+ python main.py -m -f "path\to\your\pdf1" "path\to\your\pdf2" -s 'merged-pdf.pdf'
 
  - #### To Encrypt a PDF:<br>
  <br>
