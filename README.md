@@ -25,19 +25,24 @@ This project uses argument passer library to allow the user to perform any opera
   ## Use Case examples
   You can try simple commands in your terminal that perform a single operation as follows: 
 
-  **- To Merge 2 PDF's and save it with a name you specify:**
+  **- To Merge 2 PDF's and save it with a name you specify:**<br>
+  <br>
 python main.py -m -f '..PDF formatter\samplepdf\samplepdf2mb.pdf' '..\PDF formatter\samplepdf\samplepdf3mb.pdf' -s 'merged-pdf.pdf'
 
-**To Encrypt a PDF:**
+**- To Encrypt a PDF:**<br>
+<br>
 python main.py -f '..\PDF formatter\samplepdf\samplepdf2mb.pdf' -e 'password-to-encrypt-with'
 
-**To convert a PDF to a Word Document:**
+**- To convert a PDF to a Word Document:**<br>
+<br>
 python main.py -f '..\Path-to-your-pdf' -w
 
-**To decrypt a file:**
+**- To decrypt a file:**<br>
+<br>
 python main.py -f '..\path-to-your-encrypted-file.pdf' -d 'password-to-decrypt-with'
 
-**To compress a PDF file:**
+**- To compress a PDF file:**<br>
+<br>
 python main.py -f '..\path-to-your-pdf-file.pdf' -c
 
   
