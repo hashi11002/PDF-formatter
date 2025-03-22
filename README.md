@@ -9,7 +9,8 @@ Windows Install Guide:
 3) Create a virtual enviroment instance with the command :  python -m venv myenv (You can replace myenv with any name you would like for your environment)
 4) Run command to activate your virtual environment : myenv\Scripts\activate (replace myenv with your virtual environment name)
 5) Install all the libraries needed by the application : pip install rich PyPDF2 pdf2docx convertapi argparse
-6) Now you are able to run the application. Enjoy :)
+6) Get the API Key for the file compressor from : [https://www.convertapi.com/integration/libraries/python](https://www.convertapi.com/pdf-to-compress/python)
+7) Now you are able to run the application. Enjoy :)
 
 
 ## Flag Guide
