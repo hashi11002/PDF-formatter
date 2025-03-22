@@ -1,6 +1,5 @@
 # pylint: skip-file
 from rich.progress import Progress
-import time
 from PyPDF2 import PdfReader, PdfWriter
 import argparse
 from pdf2docx import Converter
@@ -32,14 +31,14 @@ def writeDocument(writer, pages):
         writer.add_page(page)
 
 
-def MergePDF(pdfFiles, progress, task):
+def MergePDF(pdfFiles, location, progress, task):
     writer = PdfWriter()
     for file in pdfFiles:
         pages = getPages(file)
         writeDocument(writer, pages)
-    savePDF(writer, os.path.basename(pdfFiles[1]))
+    savePDF(writer, location)
     progress.update(task, advance = 1)
-    return os.path.basename(pdfFiles[1])
+    return location
 
 
 def encryptPDF(pdfFile, password: (str), progress, task):
@@ -102,7 +101,7 @@ def main():
 
         if args.m:
             if args.f and len(args.f) >= 1:
-                output = MergePDF(args.f, progress, task)
+                output = MergePDF(args.f, args.s or "mergedpdf.pdf", progress, task)
             else: print("Error: Provide pdfs or flag -f")
 
         if args.w:
