@@ -20,7 +20,7 @@ This tool allows you to perform multiple operations such as merging, and encrypt
 <br>
 
    ```
-   <tab><tab> pip install virtualenv
+   pip install virtualenv
    ```
 
 <br>
