@@ -46,32 +46,26 @@ The order is as follows from top to bottom:
   You can try simple commands in your terminal that perform a single operation as follows: 
 
 - #### To Merge 2 PDF's and save it with a name you specify:<br>
-  <br>
  python main.py -m -f "path\to\your\pdf1" "path\to\your\pdf2" -s 'merged-pdf.pdf'
-
+ <br>
  - #### To Encrypt a PDF:<br>
- <br>
   python main.py -f "path\to\your\pdf" -e 'password-to-encrypt-with'
-  
+   <br>
   - #### To convert a PDF to a Word Document:<br>
- <br>
   python main.py -f "path\to\your\pdf" -w
-  
+   <br>
   - #### To decrypt a file:<br>
-  <br>
   python main.py -f "path\to\your\encrypted\pdf" -d 'password-to-decrypt-with'
-  
+   <br>
   - #### To compress a PDF file:<br>
-  <br>
   python main.py -f "path\to\your\pdf" -c
-
+ <br>
   ## Complex Use Case Examples
 
   - #### Merging and encrypting PDF files:<br>
-  <br>
   python main.py -m -f "path\to\your\pdf" "path\to\your\pdf" -s "output-pdf.pdf" -e "password-to-encrypt-with"
-
+ <br>
   - #### Merging and converting to word document and saving it with a name:<br>
-  <br> python main.py -m -f "path\to\your\pdf1" "path\to\your\pdf2" -w -s mergeddocs.docx
-  
+ python main.py -m -f "path\to\your\pdf1" "path\to\your\pdf2" -w -s mergeddocs.docx
+   <br>
   
