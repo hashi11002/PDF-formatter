@@ -23,6 +23,15 @@ Windows Install Guide:
 6) Get the API Key for the file compressor from: [https://www.convertapi.com/integration/libraries/python](https://www.convertapi.com/pdf-to-compress/python) and add it in the compressPDF method. (Line 73)
 7) Now you are able to run the application. Enjoy :)
 
+Mac OS Intall Guide:
+1) Clone the project into your code editor.
+2) Open Terminal, navigate to your local repository, and install virtual environment with the command: pip install virtualenv
+3) Create a virtual environment instance with the command: python3 -m venv myenv (You can replace myenv with any name you would like for your environment)
+4) Activate your virtual environment with the command: source myenv/bin/activate
+5) Install all the libraries needed by the application: pip install rich PyPDF2 pdf2docx convertapi argparse
+6) Get the API Key for the file compressor from: https://www.convertapi.com/integration/libraries/python and add it in the compressPDF method. (Line 73)
+7) Now you are able to run the application. Enjoy :)
+
 
 ## Flag Guide
 This project uses argument passer library to allow the user to perform any operation on their PDF's. The Flags are as follows:
