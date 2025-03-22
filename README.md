@@ -27,7 +27,7 @@ This tool allows you to perform multiple operations such as merging, and encrypt
 
 
 7) Run command to activate your virtual environment(replace myenv with your virtual environment name):
-   ```
+   ``` 
    myenv\Scripts\activate
    ```
 9) Install all the libraries needed by the application:
