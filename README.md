@@ -29,7 +29,7 @@ This project uses argument passer library to allow the user to perform any opera
   <br>
 python main.py -m -f '..PDF formatter\samplepdf\samplepdf2mb.pdf' '..\PDF formatter\samplepdf\samplepdf3mb.pdf' -s 'merged-pdf.pdf'
 
-**- To Encrypt a PDF:**<br>
+- ** To Encrypt a PDF:**<br>
 <br>
 python main.py -f '..\PDF formatter\samplepdf\samplepdf2mb.pdf' -e 'password-to-encrypt-with'
 
