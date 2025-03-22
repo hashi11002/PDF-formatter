@@ -16,15 +16,26 @@ This tool allows you to perform multiple operations such as merging, and encrypt
 
 **Windows Install Guide:**
 1) Clone project into your code editor
-2) Open terminal, navigate to your local repository and install virtual environment on your computer with the command:
+2) Open terminal, navigate to your local repository and install virtual environment on your computer with the command: <br>
    ```
    pip install virtualenv
    ```
-4) Create a virtual enviroment instance with the command:  python -m venv myenv (You can replace myenv with any name you would like for your environment)
-5) Run command to activate your virtual environment: myenv\Scripts\activate (replace myenv with your virtual environment name)
-6) Install all the libraries needed by the application : pip install rich PyPDF2 pdf2docx convertapi argparse
-7) Get the API Key for the file compressor from: [https://www.convertapi.com/integration/libraries/python](https://www.convertapi.com/pdf-to-compress/python) and add it in the compressPDF method. (Line 73)
-8) Now you are able to run the application. Enjoy :)
+3) Create a virtual enviroment instance with the command(You can replace myenv with any name for your environment):<br>
+  ```
+   python -m venv myenv
+  ```
+
+
+7) Run command to activate your virtual environment(replace myenv with your virtual environment name):
+   ```
+   myenv\Scripts\activate
+   ```
+9) Install all the libraries needed by the application:
+    ```
+    pip install -r requirements.txt
+    ```
+11) Get the API Key for the file compressor from [here](https://www.convertapi.com/pdf-to-compress/python) and add it in the .env class with the variable API_KEY.
+12) Now you are able to run the application. Enjoy :)
 
 <br>
 
