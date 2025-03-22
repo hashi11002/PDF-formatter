@@ -1,0 +1,5 @@
+rich
+PyPDF2
+pdf2docx
+convertapi
+argparse
