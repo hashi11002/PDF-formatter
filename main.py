@@ -5,6 +5,9 @@ import argparse
 from pdf2docx import Converter
 import os
 import convertapi 
+from dotenv import load_dotenv
+
+load_dotenv() 
 
 '''
 Helper Method:
@@ -70,7 +73,7 @@ def convertToWord(pdfFile, location, progress, task):
     return location
 
 def compressPDF(pdfFile, location, progress, task):
-    convertapi.api_credentials = '' # <--- Enter Your convertAPI API Key here
+    convertapi.api_credentials = os.getenv("API_KEY")
     convertapi.convert('compress', {
     'File': pdfFile
     }, from_format = 'pdf').save_files(location)
