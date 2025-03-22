@@ -18,15 +18,19 @@ This tool allows you to perform multiple operations such as merging, and encrypt
 1) Clone project into your code editor
 2) Open terminal, navigate to your local repository and install virtual environment on your computer with the command: <br>
   <br>
+  
    ```
    pip install virtualenv
    ```
+   
    <br>
 3) Create a virtual enviroment instance with the command(You can replace myenv with any name for your environment):<br>
     <br>
+    
     ```
      python -m venv myenv
     ```
+    
     <br>
 
 7) Run command to activate your virtual environment(replace myenv with your virtual environment name):<br>
@@ -37,10 +41,12 @@ This tool allows you to perform multiple operations such as merging, and encrypt
    <br>
 9) Install all the libraries needed by the application: <br>
     <br>
+    
     ```
     pip install -r requirements.txt
     ```
-    <br>
+
+   <br>
 11) Get the API Key for the file compressor from [here](https://www.convertapi.com/pdf-to-compress/python) and add it in the .env class with the variable API_KEY.
 12) Now you are able to run the application. Enjoy :)
 
