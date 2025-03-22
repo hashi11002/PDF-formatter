@@ -19,7 +19,9 @@ This tool allows you to perform multiple operations such as merging, and encrypt
 2) Open terminal, navigate to your local repository and install virtual environment on your computer with the command: <br>
 <br>
 
-   ``` pip install virtualenv```
+   ```
+   <tab><tab> pip install virtualenv
+   ```
 
 <br>
 4) Create a virtual enviroment instance with the command:  python -m venv myenv (You can replace myenv with any name you would like for your environment)
