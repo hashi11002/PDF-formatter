@@ -30,11 +30,11 @@ This project uses argument passer library to allow the user to perform any opera
 python main.py -m -f '..PDF formatter\samplepdf\samplepdf2mb.pdf' '..\PDF formatter\samplepdf\samplepdf3mb.pdf' -s 'merged-pdf.pdf'
 
  - #### To Encrypt a PDF:<br>
-  <br>
+ 
   python main.py -f '..\PDF formatter\samplepdf\samplepdf2mb.pdf' -e 'password-to-encrypt-with'
   
   - #### To convert a PDF to a Word Document:<br>
-  <br>
+ 
   python main.py -f '..\Path-to-your-pdf' -w
   
   - #### To decrypt a file:<br>
