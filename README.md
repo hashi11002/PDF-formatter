@@ -120,19 +120,19 @@ You can try simple commands in your terminal that perform a single operation as 
   python main.py -f "path\to\your\pdf" -e 'password-to-encrypt-with'
  ``` 
    <br>
-- #### To convert a PDF to a Word Document:<br>
+-  #### To convert a PDF to a Word Document:<br>
 
   ```
   python main.py -f "path\to\your\pdf" -w
   ``` 
    <br>
-- #### To decrypt a file:<br>
+-  #### To decrypt a file:<br>
 
   ```
   python main.py -f "path\to\your\encrypted\pdf" -d 'password-to-decrypt-with'
   ```
    <br>
-- #### To compress a PDF file:<br>
+-  #### To compress a PDF file:<br>
 
   ```
   python main.py -f "path\to\your\pdf" -c
@@ -140,7 +140,7 @@ You can try simple commands in your terminal that perform a single operation as 
  <br>
 ## Complex Use Case Examples
 
-- #### Merging and encrypting PDF files:<br>
+-  #### Merging and encrypting PDF files:<br>
 ```
   python main.py -m -f "path\to\your\pdf" "path\to\your\pdf" -s "output-pdf.pdf" -e "password-to-encrypt-with"
 ```
