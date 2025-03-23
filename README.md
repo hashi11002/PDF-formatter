@@ -1,4 +1,4 @@
-# PDF Formatter
+ # PDF Formatter
 This tool allows you to perform multiple operations such as merging, and encrypting on your PDF's using one command line.
 
 ## API's and libraries imported
@@ -56,6 +56,7 @@ This tool allows you to perform multiple operations such as merging, and encrypt
 **Mac OS Intall Guide:**
 1) Clone the project into your code editor.
 2) Open Terminal, navigate to your local repository, and install virtual environment with the command:<br><br>
+
    ```
    pip install virtualenv
    ```
@@ -108,10 +109,10 @@ The order is as follows from top to bottom:
 ## Simple Use Case examples
 You can try simple commands in your terminal that perform a single operation as follows: 
 
-- #### To Merge 2 PDF's and save it with a name you specify:<br>
+-  #### To Merge 2 PDF's and save it with a name you specify:<br>
   python main.py -m -f "path\to\your\pdf1" "path\to\your\pdf2" -s 'merged-pdf.pdf'
  <br>
-- #### To Encrypt a PDF:<br>
+-  #### To Encrypt a PDF:<br>
   python main.py -f "path\to\your\pdf" -e 'password-to-encrypt-with'
    <br>
 - #### To convert a PDF to a Word Document:<br>
