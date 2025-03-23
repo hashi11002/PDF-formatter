@@ -32,7 +32,7 @@ This tool allows you to perform multiple operations such as merging, and encrypt
     
     <br>
 
-7) Run command to activate your virtual environment(replace myenv with your virtual environment name):<br><br>
+4) Run command to activate your virtual environment(replace myenv with your virtual environment name):<br><br>
 
    ``` 
    myenv\Scripts\activate
@@ -40,7 +40,7 @@ This tool allows you to perform multiple operations such as merging, and encrypt
    
    <br>
    
-9) Install all the libraries needed by the application: <br><br>
+5) Install all the libraries needed by the application: <br><br>
     
     ```
     pip install -r requirements.txt
@@ -48,20 +48,43 @@ This tool allows you to perform multiple operations such as merging, and encrypt
 
    <br>
    
-11) Get the API Key for the file compressor from [here](https://www.convertapi.com/pdf-to-compress/python) and add it in the .env class with the variable API_KEY.
-12) Now you are able to run the application. Enjoy :)
+6) Get the API Key for the file compressor from [here](https://www.convertapi.com/pdf-to-compress/python) and add it in the .env class with the variable API_KEY.
+7) Now you are able to run the application. Enjoy :)
 
 <br>
 
 **Mac OS Intall Guide:**
 1) Clone the project into your code editor.
-2) Open Terminal, navigate to your local repository, and install virtual environment with the command: ```pip install virtualenv```
+2) Open Terminal, navigate to your local repository, and install virtual environment with the command:<br><br>
+   ```
+   pip install virtualenv
+   ```
+  <br>
+  
+3) Create a virtual environment instance with the command (You can replace myenv with any name you would like for your environment):<br><br>
 
-4) Create a virtual environment instance with the command: python3 -m venv myenv (You can replace myenv with any name you would like for your environment)
-5) Activate your virtual environment with the command: source myenv/bin/activate
-6) Install all the libraries needed by the application: pip install rich PyPDF2 pdf2docx convertapi argparse
-7) Get the API Key for the file compressor from: https://www.convertapi.com/integration/libraries/python and add it in the compressPDF method. (Line 73)
-8) Now you are able to run the application. Enjoy :)
+   ```
+   python3 -m venv myenv
+   ```
+
+   <br>
+4) Activate your virtual environment with the command:<br><br>
+
+   ```
+   source myenv/bin/activate
+   ```
+
+   <br>
+5) Install all the libraries needed by the application: <br><br>
+
+    ```
+    pip install -r requirements.txt
+    ```
+
+    <br>
+   
+6) Get the API Key for the file compressor from [here](https://www.convertapi.com/pdf-to-compress/python) and add it in the .env class with the variable API_KEY.
+7) Now you are able to run the application. Enjoy :)
 
 
 ## Flag Guide
