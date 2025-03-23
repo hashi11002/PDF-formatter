@@ -1,4 +1,4 @@
- # PDF Formatter
+# PDF Formatter
 This tool allows you to perform multiple operations such as merging, and encrypting on your PDF's using one command line.
 
 ## API's and libraries imported
@@ -115,21 +115,25 @@ You can try simple commands in your terminal that perform a single operation as 
 ```
 <br>
 -  #### To Encrypt a PDF:<br>
+
  ```
   python main.py -f "path\to\your\pdf" -e 'password-to-encrypt-with'
  ``` 
    <br>
 - #### To convert a PDF to a Word Document:<br>
+
   ```
   python main.py -f "path\to\your\pdf" -w
   ``` 
    <br>
 - #### To decrypt a file:<br>
+
   ```
   python main.py -f "path\to\your\encrypted\pdf" -d 'password-to-decrypt-with'
   ```
    <br>
 - #### To compress a PDF file:<br>
+
   ```
   python main.py -f "path\to\your\pdf" -c
   ``` 
