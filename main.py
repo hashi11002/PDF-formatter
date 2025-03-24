@@ -5,15 +5,9 @@ import argparse
 from pdf2docx import Converter
 import os
 import convertapi 
-from dotenv import load_dotenv
+from APIKEY import API_KEY
 
-load_dotenv() 
 
-'''
-Helper Method:
-Reads a PDF file and converts it into pages that can be used 
-by the PYPDF2 library
-''' 
 def getPages(pdfFile: (str)):
     reader = PdfReader(pdfFile)
     pages = reader.pages
@@ -47,11 +41,13 @@ def MergePDF(pdfFiles, location, progress, task):
 def encryptPDF(pdfFile, password: (str), progress, task):
     pages = getPages(pdfFile)
     writer = PdfWriter()
+    reader = PdfReader(pdfFile)
     writeDocument(writer, pages)
-    writer.encrypt(password)
-    print("{pdfFile} has been encrypted")
-    savePDF(writer, "encrypted_PDF.pdf")
-    progress.update(task, advance = 1)
+    if(not(reader.is_encrypted)):
+        writer.encrypt(password)
+        print("{pdfFile} has been encrypted")
+        savePDF(writer, "encrypted_PDF.pdf")
+        progress.update(task, advance = 1)
     return "encrypted_PDF.pdf"
 
 def decryptPDF(pdfFile, password: (str), progress, task):
@@ -60,8 +56,11 @@ def decryptPDF(pdfFile, password: (str), progress, task):
     if (reader.is_encrypted):
         reader.decrypt(password)
         writeDocument(writer, getPagesFromReader(reader))
-    savePDF(writer, "decrypted_PDF.pdf")
-    progress.update(task, advance = 1)
+        savePDF(writer, "decrypted_PDF.pdf")
+        progress.update(task, advance = 1)
+    else:
+        print("PDF is already decrypted")
+    
     return "decrypted_PDF.pdf"
 
 def convertToWord(pdfFile, location, progress, task):
@@ -73,12 +72,16 @@ def convertToWord(pdfFile, location, progress, task):
     return location
 
 def compressPDF(pdfFile, location, progress, task):
-    convertapi.api_credentials = os.getenv("API_KEY")
-    convertapi.convert('compress', {
-    'File': pdfFile
-    }, from_format = 'pdf').save_files(location)
-    progress.update(task, advance = 1)
-    return location
+    try:
+        convertapi.api_credentials = API_KEY
+        convertapi.convert('compress', {
+        'File': pdfFile
+        }, from_format = 'pdf').save_files(location)   
+        progress.update(task, advance = 1)
+        return location 
+    except convertapi.exceptions.ApiError as e:
+        print(f"API error occurred: {e}")  
+
 
 def main():
 
