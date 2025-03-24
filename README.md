@@ -48,7 +48,7 @@ This tool allows you to perform multiple operations such as merging, and encrypt
 
    <br>
    
-6) Get the API Key for the file compressor from [here](https://www.convertapi.com/pdf-to-compress/python) and add it in the .env class with the variable API_KEY.
+6) Get the API Key for the file compressor from [here](https://www.convertapi.com/pdf-to-compress/python) and add it in the APIKEY.py class with the variable API_KEY.
 7) Now you are able to run the application. Enjoy :)
 
 <br>
